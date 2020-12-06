@@ -4,7 +4,7 @@ from keras.models import load_model
 import numpy as np
 
 #load model
-path_model = 'path_too_my_model.h5'
+path_model = 'path_to_my_model.h5'
 predictor = load_model(path_model)
 
 #initial value

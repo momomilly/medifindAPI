@@ -5,13 +5,6 @@ from PIL import Image
 
 app = Flask(__name__)
 
-ALLOWED_EXTENSIONS = {'jpg'}
-
-
-def allowed_file(filename):
-    # xxx.jpg -> it return TRUE if it look like ALLOWED_EXTENSIONS
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 @app.route('/')
 def home():
@@ -24,8 +17,6 @@ def predict():
     file = request.files['image']
     if file is None or file.filename == "":
         return jsonify({'error': 'no file'})
-    if not allowed_file(file.filename):
-        return jsonify({'error': 'format not supported'})
 
     try:
         #1 load image
